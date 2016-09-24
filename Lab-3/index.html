@@ -9,7 +9,10 @@ your page must include an external css page that applies some version of the fol
 // - font that is 10% larger for <strong> tags, and a different font color for <em> tags
 //? - alternating colors in the backgrounds of your tables
 
-you must also create a "Contact the Webmaster" page using form elements. Provide a link at the bottom of your page to the contact page. The contact page should allow for submission of comments, along with an associated e-mail and name.
+you must also create a "Contact the Webmaster" page using form
+elements. Provide a link at the bottom of your page to the contact 
+page. The contact page should allow for submission of comments, 
+along with an associated e-mail and name.
 
 -->
 
@@ -18,44 +21,13 @@ you must also create a "Contact the Webmaster" page using form elements. Provide
 <html>
 	<head>
 		<!--heading contains everything that isnt vis--> 
-		<title>Lab 1</title>	
-		<style> 
-		
-			body {
-				background-color: #ffa31a;
-				font-family: monospace;
-			}
-
-			em {
-				color: red;
-			}
-
-			strong {
-				font-size: 1.1em;
-			}
-
-			img {
-				border-radius: 5px;
-				width: 30%;
-				box-shadow: 10px red;
-			}
-
-			td, th {
-				border: solid blue 1px;
-				border-magin: 2px;
-				text-align: center;
-			}
-
-			th:nth-child(odd), td:nth-child(odd) {
-				background-color: red;			
-			}
-
-		</style>
+		<title>Lab 3</title>	
+		<link href="style.css" type="text/css" rel="stylesheet" />
 	</head>
 	
 	<body>
 		<h1>Gregory Mann</h1>
-		<img src="Pictures/rowPic.jpg" alt="Gir from invader Zim" />
+		<img src="Pictures/rowPic.jpg" alt="My row and I" />
 		<p><a href="Pictures">This is a link to my Pictures</a></p>
 
 		<h2>A few things about me</h2>
@@ -127,5 +99,6 @@ you must also create a "Contact the Webmaster" page using form elements. Provide
 			</ol>
 
 		<p><a href="231" >A link to my 231 folder</a></p>
+		<p><a href="contactWebmaster.html" >Contact the Webmaster</a></p>
 	</body>
 </html>

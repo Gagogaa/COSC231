@@ -1,0 +1,42 @@
+body {
+	background-color: #ffa31a;
+	font-family:helvetica, monospace;
+}
+
+em {
+	color: red;
+}
+
+strong {
+	font-size: 110%;
+}
+
+img {
+	border-radius: 5px;
+	width: 30%;
+	box-shadow: 10px red;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+tr:nth-child(even) {
+	background-color: red;
+}
+
+tr:nth-child(even):hover {
+	background-color: rgba(240,0,0,255);
+}
+
+
+tr:nth-child(odd):hover {
+	background-color: rgba(0,0,0,0.2);
+}
+
+td, th {
+	border-left: 1px solid red;
+	border-right: 1px solid red;
+	text-align: center;
+}
+
