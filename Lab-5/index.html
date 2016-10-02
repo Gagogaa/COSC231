@@ -1,10 +1,20 @@
-<!-- TODO: Make this a dives within divs kind of a thing -->
+<!-- 
+lab 5
+use javascript to create a grid determined by specifications given by the user. Use two textboxes ask for the user's desired width and height in number of squares. Give the user a button to confirm.
+
+x two text boxes
+x one button (onclick draws the grid)
+x create grid by appending new children
+x grid can either be a table or collection of divs
+x clicking on the button a second time should clear the previous board, and draw a new one, with colors randomly assigned 
+-->
 <!doctype html>
 <html lang="en_us">
 <head>
 	<title>Lab 5</title>
-	<style> 
-		div div {
+
+	<style>
+		div div div {
 			width: 5em;
 			height: 5em;
 			border: 0.1em;
@@ -12,6 +22,21 @@
 			display: inline-block;
 		}
 
+		input {
+			margin-bottom: 3em;
+			transition: all 0.2s;
+		}
+
+		input:focus {
+			box-shadow: 0 0 0.5em 2px rgba(96,0,255,0.8);
+		}
+
+		button {
+			transition: all 0.2s;
+		}
+		button:focus {
+			box-shadow: 0 0 0.5em 1px rgba(96,0,255,0.8);
+		}
 	</style>
 
 	<script>
@@ -26,36 +51,28 @@
 
 				for(var i = 0; i < y; i++){
 					var box = createDiv();
-					/* attribute adding was referenced from http://www.w3schools.com/jsref/met_document_createattribute.asp 
-					(i figured that i needed to create an attribute node and append it to the box divs just like i did with the divs within grid 
-					i just didnt know what methods i needed to do it with)*/
+					/* adding attributes referenced from http://www.w3schools.com/jsref/met_document_createattribute.asp
+					(I figured that I needed to create an attribute node and append it to the box divs just like I did 
+					with the divs within grid I just didnt know what methods to use)*/
 					var styleNode = document.createAttribute("style");
-					styleNode.value = "background-color:" + randomColor(Math.random()) + ";";
+					styleNode.value = "background-color: " + ((Math.random() > 0.5) ? "purple" : "blue") + ";";
 					box.setAttributeNode(styleNode);
 					document.getElementById('grid').children[j].appendChild(box);
 				}
-
 			}
-			console.log(x + " " + y);
 		}
 
 		function createDiv(){
 			return document.createElement('div');
 		}
-
-		function randomColor(x){
-			if(x < 0.5){
-				return "red";
-			}
-			return "blue";
-		}
 	</script>
+
 </head>
 
 <body>
-	<input type="text" name="rows" id="rows" placeholder="Rows" />
-	<input type="text" name="cols" id="cols" placeholder="Cols" />
+	<input type="text" name="rows" id="rows" placeholder="width" />
+	<input type="text" name="cols" id="cols" placeholder="height" />
 	<button onclick="drawGrid()">Grid Me!</button>
-	<nom id="grid"></nom>
+	<div id="grid"></div>
 </body>
 </html>
