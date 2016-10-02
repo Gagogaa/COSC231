@@ -1,0 +1,61 @@
+<!-- TODO: Make this a dives within divs kind of a thing -->
+<!doctype html>
+<html lang="en_us">
+<head>
+	<title>Lab 5</title>
+	<style> 
+		div div {
+			width: 5em;
+			height: 5em;
+			border: 0.1em;
+			margin: 0.1em;
+			display: inline-block;
+		}
+
+	</style>
+
+	<script>
+		function drawGrid(){
+			var x = document.getElementById('rows').value;
+			var y = document.getElementById('cols').value;
+
+			document.getElementById('grid').innerHTML = "";
+
+			for(var j = 0; j < x; j++){
+				document.getElementById('grid').appendChild(createDiv());
+
+				for(var i = 0; i < y; i++){
+					var box = createDiv();
+					/* attribute adding was referenced from http://www.w3schools.com/jsref/met_document_createattribute.asp 
+					(i figured that i needed to create an attribute node and append it to the box divs just like i did with the divs within grid 
+					i just didnt know what methods i needed to do it with)*/
+					var styleNode = document.createAttribute("style");
+					styleNode.value = "background-color:" + randomColor(Math.random()) + ";";
+					box.setAttributeNode(styleNode);
+					document.getElementById('grid').children[j].appendChild(box);
+				}
+
+			}
+			console.log(x + " " + y);
+		}
+
+		function createDiv(){
+			return document.createElement('div');
+		}
+
+		function randomColor(x){
+			if(x < 0.5){
+				return "red";
+			}
+			return "blue";
+		}
+	</script>
+</head>
+
+<body>
+	<input type="text" name="rows" id="rows" placeholder="Rows" />
+	<input type="text" name="cols" id="cols" placeholder="Cols" />
+	<button onclick="drawGrid()">Grid Me!</button>
+	<nom id="grid"></nom>
+</body>
+</html>
