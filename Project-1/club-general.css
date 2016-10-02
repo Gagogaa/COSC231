@@ -1,0 +1,11 @@
+/*
+- Each page should use one general style sheet (club-general.css) that applies a thematic flow to the pages
+- i.e. If I choose to have a fan club for WarGreymon my club-general.css would apply to all of my pages:
+- a yellow background
+- curved, pointy, dinosaur talon-y font
+- steel/metallic colored font for exciting headings
+- maybe some cool metal looking :hover for my links
+- *obviously, you won't be able to use WarGreymon, he's a Digimon*
+- the club-general.css will be linked by every page, give it broad enough rules that will be used everywhere
+- pages may have individual stylesheets (i.e. club-about.css), but no in-line style attributes
+*/
