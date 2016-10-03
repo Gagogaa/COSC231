@@ -14,7 +14,7 @@ x clicking on the button a second time should clear the previous board, and draw
 	<title>Lab 5</title>
 
 	<style>
-		div div div {
+		#grid div div {
 			width: 5em;
 			height: 5em;
 			border: 0.1em;
@@ -26,16 +26,13 @@ x clicking on the button a second time should clear the previous board, and draw
 			margin-bottom: 3em;
 			transition: all 0.2s;
 		}
-
-		input:focus {
-			box-shadow: 0 0 0.5em 2px rgba(96,0,255,0.8);
-		}
-
+		
 		button {
 			transition: all 0.2s;
 		}
-		button:focus {
-			box-shadow: 0 0 0.5em 1px rgba(96,0,255,0.8);
+
+		input:focus, button:focus {
+			box-shadow: 0 0 0.5em 2px rgba(96,0,255,0.8);
 		}
 	</style>
 
@@ -70,7 +67,7 @@ x clicking on the button a second time should clear the previous board, and draw
 </head>
 
 <body>
-	<input type="text" name="rows" id="rows" placeholder="width" />
+	<input type="text" name="rows" id="rows" placeholder="width" autofocus />
 	<input type="text" name="cols" id="cols" placeholder="height" />
 	<button onclick="drawGrid()">Grid Me!</button>
 	<div id="grid"></div>
