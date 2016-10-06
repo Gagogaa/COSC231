@@ -21,3 +21,9 @@
 - Regex validation on registration form
 - Cookie store for registered users
 
+<!--
+some resoureces
+http://pokemon.wikia.com/wiki/Gengar
+http://bulbapedia.bulbagarden.net/wiki/Gengar_(Pok%C3%A9mon)
+-->
+

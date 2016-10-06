@@ -5,4 +5,63 @@ x Homepage (index.html)
 - the slogan of the club
 - 'upcoming events'
 --> 
+<!doctype html>
+<html lang="en"> 
+<head>
+	<title>Gengar Home</title>
+	<link rel="stylesheet" href="style.css" type="text/css"/>
+	<style> 
 
+		img {
+			opacity: 0;
+			animation: fade 2s ease 3s forwards;
+		}
+
+		h1 + p {
+			opacity: 0;
+			font-size: 5em;
+			text-align: center;
+			animation: fade 2s ease 3s forwards;
+		}
+
+		@keyframes fade {
+			0%{
+				opacity: 0;
+			}
+			100%{
+				opacity: 1;
+			}
+		}
+	</style>
+</head>
+
+<body>
+<h1>Why catch them all when you could have</h1>
+<p><strong>Gengar</strong></p>
+
+<a class="cont cont-center"><img src="600px-094Gengar.png" /></a>
+
+<h2>Upcomming events</h2>
+<table>
+	<tr></tr>
+	<tr></tr>
+	<tr></tr>
+	<tr></tr>
+</table>
+
+<nav> 
+
+	<div>
+		<button>About</button>
+	</div>
+
+	<div>
+		<button>Join</button>
+	</div>
+
+	<p><a>sightmap</a></p>
+
+</nav>
+
+</body>
+</html>

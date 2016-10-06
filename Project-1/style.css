@@ -1,0 +1,61 @@
+* {
+	margin: 0;
+	padding: 0;
+}
+
+h1 {
+	text-align: center;
+}
+
+body {
+	background: linear-gradient(purple, red);
+}
+
+h1, h2, h3, h4, h5, h6, p {
+	color: white; 
+}
+
+.cont {
+	display: flex;
+}
+
+.cont-center {
+	justify-content: center;
+}
+
+/* nav section */
+
+nav p {
+	align-self: flex-end;
+	width: 100%;
+	display: block;
+}
+
+nav, nav * {
+	display: flex;
+	justify-content: center;
+	flex-wrap: wrap;
+}
+
+nav div {
+	margin: 1em;
+	background: purple;
+	width: 30em;
+	height: 13em;	
+	align-items: center;
+	box-shadow: 0 1em 40px 0 rgba(0,0,0,0.8); 
+}
+
+nav button {
+	font-size: 2em;
+	border: 0;
+	border-radius: 3em;
+	width: 10em;
+	height: 2.5em;
+}
+
+nav a {
+	/* TODO: change the color */
+	color: purple;
+	display: flex;
+}
