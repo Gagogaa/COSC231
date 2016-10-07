@@ -1,18 +1,52 @@
+/*
+*/
+
+/* this media query doesnt work trying to input things into the form fields clauses it to srink back to 1em */
+@media only screen and (min-resolution: 117dpi) and (max-resolution: 119dpi), only screen and (min-resolution: 131dpi) and (max-resolution: 133dpi), only screen and (min-resolution: 145dpi) and (max-resolution: 154dpi), only screen and (min-resolution: 162dpi) and (max-resolution: 164dpi), only screen and (min-resolution: 169dpi){
+	* {
+		font-size: 1.1em;
+	}	
+}
+
 * {
 	margin: 0;
 	padding: 0;
 }
 
-h1 {
-	text-align: center;
-}
-
 body {
+	margin-top: 2em;
 	background: linear-gradient(purple, red);
 }
 
 h1, h2, h3, h4, h5, h6, p {
 	color: white; 
+	text-align: center;
+
+}
+
+/* common header sizes from http://stackoverflow.com/questions/6140430/what-are-the-most-common-font-sizes-for-h1-h6-tags*/
+h1 { 
+	font-size: 2em; 
+}
+
+h2 { 
+	font-size: 1.5em; 
+}
+
+h3 { 
+	font-size: 1.17em; 
+}
+
+h4 { 
+	font-size: 1.12em; 
+}
+
+h5 { 
+	font-size: .83em; 
+}
+
+h6 { 
+	font-size: .75em; 
 }
 
 .cont {
@@ -26,7 +60,6 @@ h1, h2, h3, h4, h5, h6, p {
 /* nav section */
 
 nav p {
-	align-self: flex-end;
 	width: 100%;
 	display: block;
 }
@@ -38,24 +71,34 @@ nav, nav * {
 }
 
 nav div {
+	font-size: 1em;
+	flex-basis: 10em;
 	margin: 1em;
 	background: purple;
-	width: 30em;
 	height: 13em;	
 	align-items: center;
 	box-shadow: 0 1em 40px 0 rgba(0,0,0,0.8); 
 }
 
-nav button {
+button {
+	margin: 1em;
 	font-size: 2em;
 	border: 0;
-	border-radius: 3em;
+	border-radius: 2.5em;
 	width: 10em;
 	height: 2.5em;
+	color: purple;
+	transition: all .5s;
+}
+
+button:hover, button:focus {
+	color: white;
+	background: #79B215; 
 }
 
 nav a {
-	/* TODO: change the color */
+	text-decoration: none;
 	color: purple;
 	display: flex;
 }
+
