@@ -1,27 +1,32 @@
-/*
-*/
+/* google fonts open sans and raleway*/
 
-/* this media query doesnt work trying to input things into the form fields clauses it to srink back to 1em */
+@import 'https://fonts.googleapis.com/css?family=Open+Sans|Raleway';
+/* found on stck overflow :/ */
 @media only screen and (min-resolution: 117dpi) and (max-resolution: 119dpi), only screen and (min-resolution: 131dpi) and (max-resolution: 133dpi), only screen and (min-resolution: 145dpi) and (max-resolution: 154dpi), only screen and (min-resolution: 162dpi) and (max-resolution: 164dpi), only screen and (min-resolution: 169dpi){
 	* {
-		font-size: 1.1em;
+		font-size: 1.2em;
 	}	
 }
 
 * {
 	margin: 0;
 	padding: 0;
+	font-family: 'Roboto', sans-serif;
 }
 
 body {
-	margin-top: 2em;
 	background: linear-gradient(purple, red);
 }
 
-h1, h2, h3, h4, h5, h6, p {
+/* Im thinking i sould use a serif font for the headers instead */
+h1, h2, h3, h4, h5, h6 {
+	font-family: 'Raleway', sans-serif;
 	color: white; 
 	text-align: center;
+}
 
+p {
+	color: white;
 }
 
 /* common header sizes from http://stackoverflow.com/questions/6140430/what-are-the-most-common-font-sizes-for-h1-h6-tags*/
@@ -49,6 +54,22 @@ h6 {
 	font-size: .75em; 
 }
 
+button {
+	margin: 1em;
+	font-size: 2em;
+	border: 0;
+	border-radius: 2.5em;
+	width: 10em;
+	height: 2.5em;
+	color: purple;
+	transition: color,background .5s;
+}
+
+button:hover, button:focus {
+	color: white;
+	background: #79B215; 
+}
+
 .cont {
 	display: flex;
 }
@@ -59,18 +80,37 @@ h6 {
 
 /* nav section */
 
-nav p {
+nav {
 	width: 100%;
-	display: block;
+	box-shadow: 0 0.5em 40px 0 rgba(0,0,0,0.5); 
+	margin-bottom: 3em;
 }
 
-nav, nav * {
+nav ul {
+	display: flex;
+	justify-content: center;
+	list-style-type: none;
+}
+
+nav li {
+	margin: 0.6em 0.9em 0.6em 0.9em;
+	font-size: 1.3em;
+}
+
+nav a{
+	color: white;
+	text-decoration: none;
+}
+
+/* footer section*/ 
+
+footer, footer * {
 	display: flex;
 	justify-content: center;
 	flex-wrap: wrap;
 }
 
-nav div {
+footer div {
 	font-size: 1em;
 	flex-basis: 10em;
 	margin: 1em;
@@ -80,25 +120,9 @@ nav div {
 	box-shadow: 0 1em 40px 0 rgba(0,0,0,0.8); 
 }
 
-button {
-	margin: 1em;
-	font-size: 2em;
-	border: 0;
-	border-radius: 2.5em;
-	width: 10em;
-	height: 2.5em;
-	color: purple;
-	transition: all .5s;
-}
-
-button:hover, button:focus {
-	color: white;
-	background: #79B215; 
-}
-
-nav a {
+footer a {
 	text-decoration: none;
 	color: purple;
-	display: flex;
+	width: 100%;
 }
 

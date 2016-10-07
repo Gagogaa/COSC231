@@ -1,0 +1,65 @@
+form {
+	display: flex;
+	flex-direction: column;
+}
+
+input, select{
+	width: 100%;
+	padding-left: 0.5em;
+	height: 2.5em;
+	border: 0;
+	border-radius: 2.5em;
+	transition: color,background .2s;
+	background: white;	
+}
+
+input:focus, select:focus {
+	color: white;
+	background: #79b215;
+}
+
+/* CSS placeholder styling found at https://css-tricks.com/almanac/selectors/p/placeholder/ */
+::-moz-placeholder {
+	transition: color 0.2s;
+}
+
+:focus::-moz-placeholder{
+	color: rgba(255,255,255,0.8);
+}
+
+::-webkit-input-placeholder {
+	transition: color 0.2s;
+}
+
+:focus::-webkit-input-placeholder{
+	color: rgba(255,255,255,0.8);
+}
+
+:-ms-input-placeholder { /* IE 10+ */
+	transition: color 0.2s;
+}
+
+:focus:-ms-input-placeholder {
+	color: rgba(255,255,255,0.8);
+}
+
+label {
+	margin: 1em;
+	color: white;
+}
+
+fieldset {
+	margin: 3em auto;
+	display: flex;
+	justify-content: center;
+	flex-wrap: wrap;
+	border: 0;
+}
+
+fieldset + button {
+	margin: 1em auto;
+}
+
+input, select, fieldset + button {
+	box-shadow: 0 0.3em 20px -0.3em rgba(0,0,0,0.8); 
+}
