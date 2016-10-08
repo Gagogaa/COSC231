@@ -50,10 +50,11 @@ label {
 
 fieldset {
 	margin: 3em auto;
+	border: none;
 	display: flex;
-	justify-content: center;
+	flex-direction: row;
 	flex-wrap: wrap;
-	border: 0;
+	justify-content: center;
 }
 
 fieldset + button {

@@ -12,6 +12,10 @@ x Homepage (index.html)
 	<link rel="stylesheet" href="style.css" type="text/css"/>
 	<style> 
 
+		h1 {
+			margin-top: 1em;
+		}
+
 		img {
 			opacity: 0;
 			animation: fade 2s ease 3s forwards;
@@ -23,6 +27,11 @@ x Homepage (index.html)
 			font-size: 5em;
 			text-align: center;
 			animation: fade 2s ease 2.8s forwards;
+		}
+
+		p + a {
+			display: flex;
+			justify-content: center;
 		}
 
 		@keyframes fade {
@@ -40,10 +49,16 @@ x Homepage (index.html)
 <h1>Why catch them all when you could have</h1>
 <p><strong>Gengar</strong></p>
 
-<span><a class="cont cont-center"><img src="600px-094Gengar.png" /></a></span>
+<a class="cont cont-center"><img src="600px-094Gengar.png" /></a>
 
 <h2>Upcomming events</h2>
 <table>
+	<th>
+		<td>Event</td>
+		<td>Location</td>
+		<td>Time</td>
+		<td>Cost</td>
+	</th>
 	<tr></tr>
 	<tr></tr>
 	<tr></tr>
@@ -60,10 +75,10 @@ x Homepage (index.html)
 	</div>
 
 	<div>
-		<a href="join.html"><button>Join Up!</button></a>
+		<a href="join.html"><button>Join Us!</button></a>
 	</div>
 
-	<a href="sitemap.html">sightmap</a>
+	<a href="sitemap.html">sitemap</a>
 </footer>
 
 </body>
