@@ -1,0 +1,137 @@
+<!-- 
+lab 6
+Add a form to your home page that allows a user to enter their preferred background color, font color, and font size and set your page to those values.
+Through use of Cookies or LocalStorage, store that data and load those values as presets when the user loads the page.
+-->
+<!-- This is so ugly -->
+
+<!doctype html>
+<html>
+<head>
+	<!-- heading contains everything that isnt vis --> 
+	<title>Lab 6</title>	
+	<link href="style.css" type="text/css" rel="stylesheet" />
+	<script>
+		function init() {
+			if(localStorage.getItem('background')){
+				document.querySelector("body").style.background = localStorage.getItem('background');
+			}
+
+			if(localStorage.getItem('fontColor')){
+				document.querySelector("body").style.color = localStorage.getItem('fontColor');
+			}
+
+			if(localStorage.getItem('size')){
+				document.querySelector("body").style.fontSize = localStorage.getItem('size');
+			}
+		}
+
+		function changeBackground(){
+			var background = document.querySelector("input[name='backgroundColor']").value;
+			localStorage.setItem("background", background);
+			document.querySelector("body").style.background = background;
+		}	
+
+		function changeFontColor(){
+			var fontColor = document.querySelector("input[name='fontColor']").value;
+			localStorage.setItem("fontColor", fontColor);
+			document.querySelector("body").style.color = fontColor;
+		}
+
+		function changeFontSize(){
+			var size = document.querySelector("input[name='fontSize']").value;
+			localStorage.setItem("size", size);
+			document.querySelector("body").style.fontSize = size;
+		}
+	</script>
+</head>
+
+<body onload="init()">
+<h1>Gregory Mann</h1>
+<img src="Pictures/rowPic.jpg" alt="My row and I" />
+<p><a href="Pictures">This is a link to my Pictures</a></p>
+
+<h2>A few things about me</h2>
+<p>This is my second year here at eastern and im glad to be in this class. My Operating system of choice is <em>Linux</em>. I <strong>love</strong> cats.</p>
+
+<h2>My Classes</h2>
+<ul>
+	<li><a href="http://catalog.emich.edu/preview_course_nopop.php?catoid=10&coid=68235">Internet-Based Computing</a></li>
+	<li><a href="http://catalog.emich.edu/preview_course_nopop.php?catoid=10&coid=68234">Computer Organization 1</a></li>
+	<li><a href="http://catalog.emich.edu/preview_course_nopop.php?catoid=20&coid=153408">Foundations of Speech and Communication</a></li>
+	<li><a href=http://catalog.emich.edu/preview_course_nopop.php?catoid=10&coid=70757">Intro to Philosophy</a></li>
+</ul>
+
+<table>
+	<tr>
+		<th>Class</th>
+		<th>Course Number</th>
+		<th>Days</th>
+		<th>Start Time</th>
+		<th>End Time</th>
+		<th>Teacher</th>
+		<th>Room Number</th>
+	</tr>
+	<tr>
+		<td>Computer Organization 1</td>
+			<span class=""></span>
+		<td>COSC 221</td>
+		<td>TR</td>
+		<td>10:00am</td>
+		<td>11:50am</td>
+		<td>Chaudhuri</td>
+		<td>Pray-H 520</td>
+	</tr>
+	<tr>
+		<td>Internet-Based Computing</td>
+		<td>COSC 231</td>
+		<td>MW</td>
+		<td>7:20pm</td>
+		<td>9:10pm</td>
+		<td>Gurnee</td>
+		<td>Pray-H 520</td>
+	</tr>
+	<tr>
+		<td>Foundations of Speech and Communication</td>
+		<td>CTAC 124</td>
+		<td>TR</td>
+		<td>3:30pm</td>
+		<td>4:45pm</td>
+		<td>Brennan</td>
+		<td>Quirk 94</td>
+	</tr>
+	<tr>
+		<td>Intro to Philosophy</td>
+		<td>PHIL 100</td>
+		<td>TR</td>
+		<td>12:30pm</td>
+		<td>1:45pm</td>
+		<td>Proulx</td>
+		<td>Pray-H 401</td>
+	</tr>
+</table>
+
+<h2>I don't really have a five year plan so here is a few things I want to get done</h2>
+	<ol>
+		<li>Get my bachelor's degree in computer science</li>
+		<li>Move out of my parents house</li>
+		<li>Become proficient in javascript</li>
+		<li>Improve my communication skills</li>
+	</ol>
+
+<h2>Style this page!<h2>
+<form>
+	<label>Background Color: <input type="text" name="backgroundColor" placeholder="" /></label>
+	<button onclick="changeBackground()" type="button">Change Background Color!</button><br />
+
+	<label>Font Color: <input type="text" name="fontColor" placeholder="" /></label>
+	<button onclick="changeFontColor()" type="button">Change Font Color!</button><br />
+
+	<label>Font Size: <input type="text" name="fontSize" placeholder="" /></label>
+	<button onclick="changeFontSize()" type="button">Change Font Size!</button><br />
+</form>
+
+<p><a href="231" >A link to my 231 folder</a></p>
+<p><a href="contactWebmaster.html" >Contact the Webmaster</a></p>
+</body>
+</html>
