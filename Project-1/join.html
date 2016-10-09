@@ -43,6 +43,7 @@ x Register new users (join.html)
 <h1>New Member Registration</h1>
 
 <form method="POST" action="#"> 
+ <!-- do the legends for the fieldsets -->
 
 	<fieldset>
 		<label>Username: <input type="text" name="username" placeholder="Username" required autofocus /></label>
@@ -51,10 +52,15 @@ x Register new users (join.html)
 	</fieldset>
 
 	<fieldset>
-		<label>Fullname: <input type="text" name="name" placeholder="John/Jane Doe" /></label>
+		<label>Fullname: <input type="text" name="name" placeholder="John/Jane Doe" required /></label>
 		<label>Email: <input type="email" name="email" placeholder="John/JaneDoe@mail.com" required /></label>
 		<label>Gender: <input type="text" name="gender" placeholder="" /></label>
-		<label>Credit Card: <input type="text" name="creditCard" placeholder="" /><label>
+	</fieldset>
+
+	<fieldset>
+		<label>Credit Card Number: <input type="text" name="creditCard" placeholder="" /></label>
+		<label>Experation Date: <input type="text" name="experationDate" placeholder="dd/mm/yy" /></label>
+		<label>Security Pin: <input type="text" name="securePin" placeholder="123" /></label>
 	</fieldset>
 
 	<fieldset>

@@ -71,6 +71,7 @@ button {
 	height: 2.5em;
 	border-radius: 2.5em;
 	color: purple;
+	background: white;
 	transition: color,background .5s;
 	box-shadow: 0 0.3em 20px -0.3em rgba(0,0,0,0.8); 
 }

@@ -18,6 +18,28 @@ input:focus, select:focus {
 	background: #79b215;
 }
 
+label {
+	margin: 1em;
+	color: white;
+}
+
+fieldset {
+	margin: 3em auto;
+	border: none;
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: center;
+}
+
+fieldset + button {
+	margin: 1em auto;
+}
+
+input, select, fieldset + button {
+	box-shadow: 0 0.3em 20px -0.3em rgba(0,0,0,0.8); 
+}
+
 /* CSS placeholder styling found at https://css-tricks.com/almanac/selectors/p/placeholder/ */
 ::-moz-placeholder {
 	transition: color 0.2s;
@@ -41,26 +63,4 @@ input:focus, select:focus {
 
 :focus:-ms-input-placeholder {
 	color: rgba(255,255,255,0.8);
-}
-
-label {
-	margin: 1em;
-	color: white;
-}
-
-fieldset {
-	margin: 3em auto;
-	border: none;
-	display: flex;
-	flex-direction: row;
-	flex-wrap: wrap;
-	justify-content: center;
-}
-
-fieldset + button {
-	margin: 1em auto;
-}
-
-input, select, fieldset + button {
-	box-shadow: 0 0.3em 20px -0.3em rgba(0,0,0,0.8); 
 }
