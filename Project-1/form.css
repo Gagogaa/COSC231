@@ -4,6 +4,10 @@ form {
 	align-items: center;
 }
 
+legend {
+	display: none;
+}
+
 input, select{
 	width: 100%;
 	padding-left: 0.5em;

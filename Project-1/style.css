@@ -26,6 +26,10 @@
 
 body {
 	background: linear-gradient(purple, red);
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -61,6 +65,21 @@ h5 {
 
 h6 { 
 	font-size: .75em; 
+}
+
+table {
+	margin: 1.5em 0em 1.5em 0em;
+	text-align: center;
+	background: purple;
+	color: white;
+	border-radius: 5px;
+
+	box-shadow: 0 0.5em 30px 1px rgba(0,0,0,0.8); 
+
+}
+
+th, td {
+	padding: 5px;
 }
 
 .btn {
@@ -119,13 +138,14 @@ nav a:hover, nav a:focus {
 
 /* footer section*/ 
 
-footer, footer * {
+footer {
 	display: flex;
 	justify-content: center;
 	flex-wrap: wrap;
 }
 
 #sitemap {
+	text-align: center;
 	opacity: 0.8;
 	text-decoration: none;
 	width: 100%;

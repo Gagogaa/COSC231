@@ -19,11 +19,6 @@ x Register new users (join.html)
 	<title>Join us!</title>
 	<link rel="stylesheet" href="style.css" type="text/css"/>
 	<link rel="stylesheet" href="form.css" type="text/css"/>
-	<style>
-		h1 {
-			width: 100%;
-		}
-	</style>
 </head>
 
 <body>
@@ -32,10 +27,9 @@ x Register new users (join.html)
 
 	<ul>
 		<li><a href="index.html">Home</a></li>
-
 		<li><a href="about.html">About Us</a></li>
-
 		<li><a href="gengar.html">What's a Gengar?</a></li>
+		<li><a href="join.html">Join Us!</a></li>
 	</ul>
 
 </nav>
@@ -46,28 +40,32 @@ x Register new users (join.html)
  <!-- do the legends for the fieldsets -->
 
 	<fieldset>
+		<legend>Username and Passowrd</legend>
 		<label>Username: <input type="text" name="username" placeholder="Username" required autofocus /></label>
 		<label>Password: <input type="password" name="password" placeholder="password" required /></label>
 		<label>Confirm Password: <input type="password" name="confPassword" placeholder="password" required /></label>
 	</fieldset>
 
 	<fieldset>
+		<legend>Personal information</legend>
 		<label>Fullname: <input type="text" name="name" placeholder="John/Jane Doe" required /></label>
 		<label>Email: <input type="email" name="email" placeholder="John/JaneDoe@mail.com" required /></label>
 		<label>Gender: <input type="text" name="gender" placeholder="" /></label>
 	</fieldset>
 
 	<fieldset>
-		<label>Credit Card Number: <input type="text" name="creditCard" placeholder="" /></label>
+		<legend>Credit card info</legend>
+		<label>Credit Card Number: <input type="text" name="creditCard" placeholder="5555-5555-5555-5555" /></label>
 		<label>Experation Date: <input type="text" name="experationDate" placeholder="dd/mm/yy" /></label>
 		<label>Security Pin: <input type="text" name="securePin" placeholder="123" /></label>
 	</fieldset>
 
 	<fieldset>
+		<legend>Club info</legend>
 		<label>Requested Title: <input type="text" name="reqTitle" placeholder="bebop" /></label>
 		<label>Pokemon Go Team:
 
-			<select placeholder="N/A">
+			<select>
 				<option value="" selected>N/A</option>
 				<option value="mystic" >Mystic</option>
 				<option value="instinct">Instinct</option>
