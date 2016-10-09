@@ -100,7 +100,7 @@ th, td {
 	background: white;
 	box-shadow: 0 0.3em 20px -0.3em rgba(0,0,0,0.8); 
 	text-decoration: none;
-	transition: color,background .5s;
+	transition: color .2s, background .5s;
 }
 
 .btn:hover, .btn:focus {
@@ -131,7 +131,7 @@ nav li {
 nav a {
 	color: white;
 	text-decoration: none;
-	transition: color,text-shadow .2s;
+	transition: color .2s, text-shadow .2s;
 }
 
 nav a:hover, nav a:focus {
