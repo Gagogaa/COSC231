@@ -63,7 +63,11 @@ h6 {
 	font-size: .75em; 
 }
 
-button {
+.btn {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	text-align: center;
 	margin: 1em;
 	font-size: 2em;
 	border: 0;
@@ -71,11 +75,13 @@ button {
 	height: 2.5em;
 	border-radius: 2.5em;
 	color: purple;
-	transition: color,background .5s;
+	background: white;
 	box-shadow: 0 0.3em 20px -0.3em rgba(0,0,0,0.8); 
+	text-decoration: none;
+	transition: color,background .5s;
 }
 
-button:hover, button:focus {
+.btn:hover, .btn:focus {
 	color: white;
 	background: #79B215; 
 }
@@ -103,11 +109,12 @@ nav li {
 nav a {
 	color: white;
 	text-decoration: none;
-	transition: text-shadow .2s;
+	transition: color,text-shadow .2s;
 }
 
 nav a:hover, nav a:focus {
 	text-shadow: 0 5px 10px rgba(0,0,0,0.8); 
+	color: #79B215;
 }
 
 /* footer section*/ 
@@ -118,22 +125,8 @@ footer, footer * {
 	flex-wrap: wrap;
 }
 
-footer div {
-	font-size: 1em;
-	flex-basis: 10em;
-	margin: 1em;
-	background: purple;
-	height: 13em;	
-	align-items: center;
-	box-shadow: 0 1em 40px 0 rgba(0,0,0,0.8); 
-}
-
-footer a {
-	text-decoration: none;
-	color: purple;
-	width: 100%;
-}
-
-footer > a {
+#sitemap {
 	opacity: 0.8;
+	text-decoration: none;
+	width: 100%;
 }
