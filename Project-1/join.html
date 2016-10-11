@@ -1,16 +1,16 @@
 <!--
 x Register new users (join.html)
-- a page holding a form for visitors to join
+x a page holding a form for visitors to join
 - must require a user to register with a valid
-- username
-- password
-- first name/last name
-- e-mail
-- date of birth
+x username
+x password
+x first name/last name
+x e-mail
+x date of birth
 - gender
-- requested title
-- Credit card number
-- favorite type of apple (something in a select box)
+x requested title
+x Credit card number
+x favorite type of apple (something in a select box)
 - if the user is already logged in, the page says thanks for supporting
 -->
 <!doctype html>
@@ -20,7 +20,9 @@ x Register new users (join.html)
 	<link rel="stylesheet" href="club-general.css" type="text/css"/>
 	<link rel="stylesheet" href="club-form.css" type="text/css"/>
 	<script>
+	//var inputs = document.querySelectorAll('input');
 	
+	alert("cookie" + document.cookie);
 	/* To get the welcom back page delete the h1 form and the footer*/
 	
 	</script>
@@ -41,33 +43,35 @@ x Register new users (join.html)
 
 <h1>New Member Registration</h1>
 
-<form method="POST" action="#"> 
- <!-- do the legends for the fieldsets -->
+<form method="POST" action="form.js"> 
+ <!-- comfirm passwords -->
 
 	<fieldset>
 		<legend>Username and Passowrd</legend>
-		<label>Username: <input type="text" name="username" placeholder="Username" required autofocus /></label>
-		<label>Password: <input type="password" name="password" placeholder="password" required /></label>
-		<label>Confirm Password: <input type="password" name="confPassword" placeholder="password" required /></label>
+		<label>Username: <input type="text" name="username" placeholder="Username" pattern="\w+" required autofocus /></label>
+		<label>Password: <input type="password" name="password" placeholder="password" pattern="+" required /></label>
+		<label>Confirm Password: <input type="password" name="confPassword" placeholder="password" pattern="+" required /></label>
 	</fieldset>
 
 	<fieldset>
 		<legend>Personal information</legend>
-		<label>Fullname: <input type="text" name="name" placeholder="John/Jane Doe" required /></label>
-		<label>Email: <input type="email" name="email" placeholder="John/JaneDoe@mail.com" required /></label>
-		<label>Gender: <input type="text" name="gender" placeholder="" /></label>
+		<label>Fullname: <input type="text" name="name" placeholder="John/Jane Doe" pattern="\w+[ ]\w+(?:[ ]\w+)?)" required /></label>
+		<label>Birth Date: <input type="text" name="dob" placeholder="02/26/1997" pattern="(?:1[1-2]|[0]?\d)[-/ ](?:[012]?\d|3[01])[-/ ](?:\d{2}|\d{4})" required /></label>
+		<label>Email: <input type="email" name="email" placeholder="John/JaneDoe@mail.com" pattern="\w+@\w+.\w+" required /></label>
+		<label>Gender: <input type="text" name="gender" placeholder="" pattern="\w+" required/></label>
 	</fieldset>
 
 	<fieldset>
 		<legend>Credit card info</legend>
-		<label>Credit Card Number: <input type="text" name="creditCard" placeholder="5555-5555-5555-5555" /></label>
-		<label>Experation Date: <input type="text" name="experationDate" placeholder="dd/mm/yy" /></label>
-		<label>Security Pin: <input type="text" name="securePin" placeholder="123" /></label>
+		<!-- four of any four digets fillowed by a "-", "/", or " "-->
+		<label>Credit Card Number: <input type="text" name="creditCard" placeholder="5555-5555-5555-5555" pattern="(^?:\d{4}(?:-/ )?){4}$" required /></label>
+		<label>Experation Date: <input type="text" name="experationDate" placeholder="dd/mm/yy" pattern="(?:1[1-2]|[0]?\d)[-/ ](?:[012]?\d|3[01])[-/ ](?:\d{2}|\d{4})" required /></label>
+		<label>Security Pin: <input type="text" name="securePin" placeholder="123" pattern="(?:\d){3}" required /></label>
 	</fieldset>
 
 	<fieldset>
 		<legend>Club info</legend>
-		<label>Requested Title: <input type="text" name="reqTitle" placeholder="bebop" /></label>
+		<label>Requested Title: <input type="text" name="reqTitle" placeholder="bebop" pattern="[\w| ]+" required /></label>
 		<label>Pokemon Go Team:
 
 			<select>
@@ -80,7 +84,7 @@ x Register new users (join.html)
 		</label>
 	</fieldset>
 
-	<button class="btn" type="submit">Join up!</button>
+	<button onclick="join()" class="btn" type="submit">Join up!</button>
 </form>
 
 <footer> 
