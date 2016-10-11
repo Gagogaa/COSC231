@@ -20,15 +20,31 @@ x favorite type of apple (something in a select box)
 	<link rel="stylesheet" href="club-general.css" type="text/css"/>
 	<link rel="stylesheet" href="club-form.css" type="text/css"/>
 	<script>
-	//var inputs = document.querySelectorAll('input');
-	
-	alert("cookie" + document.cookie);
-	/* To get the welcom back page delete the h1 form and the footer*/
+		function join(){
+			document.cookie = "username = " + document.querySelector("input[name=username]").value + ";";
+		}
+
+		function logOut(){
+			document.cookie = "username= ";
+			location.reload();
+		}
+
+		function init() {
+			if(!(document.cookie == "username=")){
+				document.querySelector("h1").innerHTML = "";
+				document.querySelector("form").innerHTML = "<h1>Thankyou for your support</h1><h1>" + document.cookie.split("=")[1] + "!</h1><button class='btn' onclick='logOut();'>Log Out</button>";
+				var x = document.createElement("style");
+				var y = document.createTextNode("html{height:100%}h1{font-size: 3em;} h1{margin-top:1em;}");
+				x.appendChild(y);
+				document.querySelector("html").appendChild(x);
+			}
+		}
+		/* To get the welcom back page delete the h1 form and the footer*/
 	
 	</script>
 </head>
 
-<body>
+<body onload="init();">
 
 <nav id="topNav">
 
@@ -43,12 +59,12 @@ x favorite type of apple (something in a select box)
 
 <h1>New Member Registration</h1>
 
-<form method="POST" action="form.js"> 
+<form method="POST" action="#"> 
  <!-- comfirm passwords -->
 
 	<fieldset>
 		<legend>Username and Passowrd</legend>
-		<label>Username: <input type="text" name="username" placeholder="Username" pattern="\w+" required autofocus /></label>
+		<label>Username: <input type="text" name="username" placeholder="username" pattern="\w+" required autofocus /></label>
 		<label>Password: <input type="password" name="password" placeholder="password" pattern="+" required /></label>
 		<label>Confirm Password: <input type="password" name="confPassword" placeholder="password" pattern="+" required /></label>
 	</fieldset>
