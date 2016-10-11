@@ -30,11 +30,11 @@ x favorite type of apple (something in a select box)
 		}
 
 		function init() {
-			if(!(document.cookie == "username=")){
+			if(!(document.cookie == "username=") && (document.cookie)){
 				document.querySelector("h1").innerHTML = "";
 				document.querySelector("form").innerHTML = "<h1>Thankyou for your support</h1><h1>" + document.cookie.split("=")[1] + "!</h1><button class='btn' onclick='logOut();'>Log Out</button>";
 				var x = document.createElement("style");
-				var y = document.createTextNode("html{height:100%}h1{font-size: 3em;} h1{margin-top:1em;}");
+				var y = document.createTextNode("html{height:100%}h1{font-size: 3em;} h1{margin:1em 0 0.5em 0;}");
 				x.appendChild(y);
 				document.querySelector("html").appendChild(x);
 			}
@@ -81,7 +81,7 @@ x favorite type of apple (something in a select box)
 		<legend>Credit card info</legend>
 		<!-- four of any four digets fillowed by a "-", "/", or " "-->
 		<label>Credit Card Number: <input type="text" name="creditCard" placeholder="5555-5555-5555-5555" pattern="(^?:\d{4}(?:-/ )?){4}$" required /></label>
-		<label>Experation Date: <input type="text" name="experationDate" placeholder="dd/mm/yy" pattern="(?:1[1-2]|[0]?\d)[-/ ](?:[012]?\d|3[01])[-/ ](?:\d{2}|\d{4})" required /></label>
+		<label>Experation Date: <input type="text" name="experationDate" placeholder="mm/yy" pattern="(?:1[1-2]|[0]?\d)[-/ ](?:\d{2}|\d{4})" required /></label>
 		<label>Security Pin: <input type="text" name="securePin" placeholder="123" pattern="(?:\d){3}" required /></label>
 	</fieldset>
 
