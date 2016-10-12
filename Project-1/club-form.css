@@ -1,11 +1,26 @@
+/* contains all form specific elements */
 form {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 }
 
+fieldset {
+	margin: 3em auto;
+	border: none;
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: center;
+}
+
 legend {
 	display: none;
+}
+
+label {
+	margin: 1em;
+	color: white;
 }
 
 input, select{
@@ -23,27 +38,14 @@ input:focus, select:focus {
 	background: #79b215;
 }
 
+/* The CSS validator says that invalid is an "Unknown pseudo-element or pseudo-class" despite MDN saying its an html5 recomendation;
+https://developer.mozilla.org/en-US/docs/Web/CSS/:invalid
+*/
+/*
 input:invalid:focus {
 	background: red;
 }
-
-label {
-	margin: 1em;
-	color: white;
-}
-
-fieldset {
-	margin: 3em auto;
-	border: none;
-	display: flex;
-	flex-direction: row;
-	flex-wrap: wrap;
-	justify-content: center;
-}
-
-fieldset + button {
-	margin: 1em auto;
-}
+*/
 
 input, select, fieldset + button {
 	box-shadow: 0 0.3em 20px -0.3em rgba(0,0,0,0.8); 

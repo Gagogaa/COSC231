@@ -1,20 +1,19 @@
 /*
-- Each page should use one general style sheet (club-general.css) that applies a thematic flow to the pages
-- i.e. If I choose to have a fan club for WarGreymon my club-general.css would apply to all of my pages:
-- a yellow background
-- curved, pointy, dinosaur talon-y font
-- steel/metallic colored font for exciting headings
-- maybe some cool metal looking :hover for my links
-- *obviously, you won't be able to use WarGreymon, he's a Digimon*
-- the club-general.css will be linked by every page, give it broad enough rules that will be used everywhere
-- pages may have individual stylesheets (i.e. club-about.css), but no in-line style attributes
+x Each page should use one general style sheet (club-general.css) that applies a thematic flow to the pages
+x i.e. If I choose to have a fan club for WarGreymon my club-general.css would apply to all of my pages:
+x a yellow background
+x curved, pointy, dinosaur talon-y font
+x steel/metallic colored font for exciting headings
+x maybe some cool metal looking :hover for my links
+x *obviously, you won't be able to use WarGreymon, he's a Digimon*
+x the club-general.css will be linked by every page, give it broad enough rules that will be used everywhere
+x pages may have individual stylesheets (i.e. club-about.css), but no in-line style attributes
 */
 
-/* google fonts open sans and raleway*/
-
+/* google fonts open sans and raleway */
 @import 'https://fonts.googleapis.com/css?family=Open+Sans|Raleway';
 
-/* found on stck overflow :/ */
+/* I know how @media works but I found the exact dpi ranges on stack overflow http://stackoverflow.com/questions/12469875/how-to-code-css-media-queries-targeting-all-mobile-devices-and-tablets */
 @media only screen and (min-resolution: 117dpi) and (max-resolution: 119dpi), only screen and (min-resolution: 131dpi) and (max-resolution: 133dpi), only screen and (min-resolution: 145dpi) and (max-resolution: 154dpi), only screen and (min-resolution: 162dpi) and (max-resolution: 164dpi), only screen and (min-resolution: 169dpi){
 	* {
 		font-size: 1.2em;
@@ -22,11 +21,6 @@
 
 	nav li {
 		font-size: 1.3em;
-	}
-
-	/* Mobile needs this but it must be run after the height: 100% thats requiered for firefox */
-	body {
-		height: auto !important;
 	}
 }
 
@@ -50,9 +44,6 @@ h1, h2, h3, h4, h5, h6 {
 	text-align: center;
 }
 
-p {
-	color: white;
-}
 
 /* common header sizes from http://stackoverflow.com/questions/6140430/what-are-the-most-common-font-sizes-for-h1-h6-tags*/
 h1 { 
@@ -61,6 +52,7 @@ h1 {
 
 h2 { 
 	font-size: 1.5em; 
+	margin: 1em 0 1em 0;
 }
 
 h3 { 
@@ -77,6 +69,29 @@ h5 {
 
 h6 { 
 	font-size: .75em; 
+}
+
+h2 + div {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	width: 70%;
+}
+
+h2 + p {
+	width: 70%;
+}
+
+p {
+	color: white;
+}
+
+p > a {
+	color: #79B215; 
+}
+
+p > a:visited {
+	color: purple;
 }
 
 table {
@@ -121,7 +136,6 @@ th, td {
 }
 
 /* nav section */
-
 nav {
 	width: 100%;
 	box-shadow: 0 0.5em 40px 0 rgba(0,0,0,0.5); 
@@ -152,7 +166,7 @@ nav a:hover, nav a:focus {
 }
 
 /* footer section*/ 
-
+/* I don't think my use of the footer tag is 100% appropriate... oh well */
 footer {
 	display: flex;
 	justify-content: center;

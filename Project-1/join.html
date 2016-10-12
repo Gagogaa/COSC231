@@ -2,17 +2,16 @@
 <!--
 x Register new users (join.html)
 x a page holding a form for visitors to join
-- must require a user to register with a valid
+x must require a user to register with a valid
 x username
 x password
 x first name/last name
 x e-mail
 x date of birth
-- gender
+x gender
 x requested title
 x Credit card number
 x favorite type of apple (something in a select box)
-TODO: fix this last bit to account for the google cookies
 x if the user is already logged in, the page says thanks for supporting
 -->
 <html lang="en">
@@ -21,9 +20,10 @@ x if the user is already logged in, the page says thanks for supporting
 	<link rel="stylesheet" href="club-general.css" type="text/css"/>
 	<link rel="stylesheet" href="club-form.css" type="text/css"/>
 	<meta charset="UTF-8">
+
 	<script>
 		function join(){
-			document.cookie = "username = " + document.querySelector("input[name=username]").value + ";";
+			document.cookie = "username=" + document.querySelector("input[name=username]").value;
 		}
 
 		function logOut(){
@@ -32,9 +32,10 @@ x if the user is already logged in, the page says thanks for supporting
 		}
 
 		function init() {
-			//this is a bad way of doing things the google cookies sometimes get in the way and runin things
+			//this is a bad way of doing things the google cookies sometimes break this 
 			if(!(document.cookie == "username=") && (document.cookie)){
 				document.querySelector("h1").innerHTML = "";
+				document.querySelector("footer").innerHTML = "";
 				document.querySelector("form").innerHTML = "<h1>Thank you for your support</h1><h1>" + document.cookie.split("=")[1] + "!</h1><button class='btn' onclick='logOut();'>Log Out</button>";
 				var x = document.createElement("style");
 				var y = document.createTextNode("html{height:100%}h1{font-size: 3em;} h1{margin:1em 0 0.5em 0;}");
@@ -42,9 +43,8 @@ x if the user is already logged in, the page says thanks for supporting
 				document.querySelector("html").appendChild(x);
 			}
 		}
-		/* To get the welcom back page delete the h1 form and the footer*/
-	
 	</script>
+
 </head>
 
 <body onload="init();">
@@ -63,34 +63,46 @@ x if the user is already logged in, the page says thanks for supporting
 <h1>New Member Registration</h1>
 
 <form method="POST" action="#"> 
- <!-- comfirm passwords -->
+<!-- Okay so I was originally trying to write these descriptions in "word form" but they quickly became even more unreadable than the regex 
+		 itself so I'll give you the condensed descriptions -->
 
 	<fieldset>
-		<legend>Username and Passowrd</legend>
-		<label>Username: <input type="text" name="username" placeholder="username" maxlength="25"	pattern="[\w]+" required autofocus /></label>
-		<label>Password: <input type="password" name="password" placeholder="password" maxlength="25" pattern="[\w ]+" required /></label>
-		<label>Confirm Password: <input type="password" name="confPassword" placeholder="password" maxlength="25" pattern="\w+" required /></label>
+		<legend>Username and Password</legend>
+		<!-- Any word up to 25 characters -->
+		<label>Username: <input type="text" name="username" placeholder="username" maxlength="25"	pattern="^[\w]+$" required autofocus /></label>
+		<!-- Any word including spaces up to 25 characters with no preceding or trailing white-space -->
+		<label>Password: <input type="password" name="password" placeholder="password" maxlength="25" pattern="^[\w ]+$" required /></label>
+		<!-- Same thing as the above but I should really make sure they are the same -->
+		<label>Confirm Password: <input type="password" name="confPassword" placeholder="password" maxlength="25" pattern="^[\w ]+$" required /></label>
 	</fieldset>
 
 	<fieldset>
 		<legend>Personal information</legend>
-		<label>Fullname: <input type="text" name="name" placeholder="John/Jane Doe" maxlength="50" pattern="\w+[ ]\w+(?:[ ]\w+)?" required /></label>
-		<label>Birth Date: <input type="text" name="dob" placeholder="02/26/1997" pattern="(?:1[1-2]|[0]?\d)[-/ ](?:[012]?\d|3[01])[-/ ](?:\d{2}|\d{4})" required /></label>
+		<!-- Any 2 word separated by a space followed by an optional space and word up to 50 characters --> 
+		<label>Full Name: <input type="text" name="name" placeholder="John/Jane Doe" maxlength="50" pattern="\w+[ ]\w+(?:[ ]\w+)?" required /></label>
+		<!-- A single or double digit month 1-12 followed by a "-", "/", or " " followed by a single or double digit day 1-31 followed by a "-", "/" or " " followed by any two or four digit year-->
+		<label>Birth Date: <input type="text" name="dob" placeholder="02/26/1997" pattern="(?:1[0-2]|[0]?[1-9])[-/ ](?:[12][0-9]|0?[1-9]|3[01])[-/ ](?:\d{2}|\d{4})" required /></label>
+		<!-- Any word character followed by an @ followed by any word character followed by a "." followed by any word character up to 50 characters -->
 		<label>Email: <input type="email" name="email" placeholder="John/JaneDoe@mail.com" maxlength="50" pattern="\w+@\w+\.\w+" required /></label>
-		<label>Gender: <input type="text" name="gender" placeholder="" pattern="\w+" maxlength="10" required/></label>
+		<!-- Anything that consists of word characters and spaces goes, I don't judge... Unless it's more than 25 characters long or it contains 
+				 preceding or trailing white-space characters -->
+		<label>Gender: <input type="text" name="gender" placeholder="" pattern="^[\w ]+$" maxlength="25" required/></label>
 	</fieldset>
 
 	<fieldset>
 		<legend>Credit card info</legend>
-		<!-- four of any four digets fillowed by a "-", "/", or " "-->
+		<!-- Four of any four digits followed by an optional "-", "/", or " " with no preceding or trailing white-space -->
 		<label>Credit Card Number: <input type="text" name="creditCard" placeholder="5555-5555-5555-5555" pattern="^(?:\d{4}[-/ ]?){4}$" required /></label>
-		<label>Experation Date: <input type="text" name="experationDate" placeholder="mm/yy" pattern="(?:1[1-2]|(?:[0][1-9])+|[1-9])[-/ ]?(?:\d{2}|\d{4})" required /></label>
-		<label>Security Pin: <input type="text" name="securePin" placeholder="123" pattern="(?:\d){3}" required /></label>
+		<!-- A single or double digit month 1-12 followed by an optional "-", "/" or " " followed by any two digit year 16+ -->
+		<label>Expiration Date: <input type="text" name="experationDate" placeholder="mm/yy" pattern="(?:1[0-2]|(?:[0]?[1-9]))[-/ ]?(?:1[6-9]|[2-9][0-9])" required /></label>
+		<!-- Any three digits with no preceding or trailing white-space -->
+		<label>Security Pin: <input type="text" name="securePin" placeholder="123" pattern="^(?:\d){3}$" required /></label>
 	</fieldset>
 
 	<fieldset>
 		<legend>Club info</legend>
-		<label>Requested Title: <input type="text" name="reqTitle" placeholder="bebop" maxlength="25" pattern="[\w| ]+" required /></label>
+		<!-- Any number of word or space characters with no preceding or trailing white-space up to 25 characters -->
+		<label>Requested Title: <input type="text" name="reqTitle" placeholder="bebop" maxlength="25" pattern="^[\w| ]+$" required /></label>
 		<label>Pokemon Go Team:
 
 			<select>
@@ -103,7 +115,9 @@ x if the user is already logged in, the page says thanks for supporting
 		</label>
 	</fieldset>
 	
-	<!-- yes this button will run the script weather the form is valid or not -->
+	<!-- This button will run join() and set the cookie to username even if the form is invalid. In the real world I assume you would send 
+			 the info to the server and have it do the validation and then return a cookie (or something like that). Doing it that way would 
+			 avoid this problem -->
 	<button onclick="join();" class="btn" type="submit">Join up!</button>
 </form>
 
@@ -112,5 +126,4 @@ x if the user is already logged in, the page says thanks for supporting
 </footer>
 
 </body>
-
 </html>
