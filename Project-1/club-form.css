@@ -23,6 +23,10 @@ input:focus, select:focus {
 	background: #79b215;
 }
 
+input:invalid:focus {
+	background: red;
+}
+
 label {
 	margin: 1em;
 	color: white;

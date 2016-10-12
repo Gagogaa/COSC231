@@ -1,3 +1,4 @@
+<!doctype html>
 <!--
 x Register new users (join.html)
 x a page holding a form for visitors to join
@@ -11,14 +12,15 @@ x date of birth
 x requested title
 x Credit card number
 x favorite type of apple (something in a select box)
-- if the user is already logged in, the page says thanks for supporting
+TODO: fix this last bit to account for the google cookies
+x if the user is already logged in, the page says thanks for supporting
 -->
-<!doctype html>
-<html lang="en_us">
+<html lang="en">
 <head>
 	<title>Join us!</title>
 	<link rel="stylesheet" href="club-general.css" type="text/css"/>
 	<link rel="stylesheet" href="club-form.css" type="text/css"/>
+	<meta charset="UTF-8">
 	<script>
 		function join(){
 			document.cookie = "username = " + document.querySelector("input[name=username]").value + ";";
@@ -30,9 +32,10 @@ x favorite type of apple (something in a select box)
 		}
 
 		function init() {
+			//this is a bad way of doing things the google cookies sometimes get in the way and runin things
 			if(!(document.cookie == "username=") && (document.cookie)){
 				document.querySelector("h1").innerHTML = "";
-				document.querySelector("form").innerHTML = "<h1>Thankyou for your support</h1><h1>" + document.cookie.split("=")[1] + "!</h1><button class='btn' onclick='logOut();'>Log Out</button>";
+				document.querySelector("form").innerHTML = "<h1>Thank you for your support</h1><h1>" + document.cookie.split("=")[1] + "!</h1><button class='btn' onclick='logOut();'>Log Out</button>";
 				var x = document.createElement("style");
 				var y = document.createTextNode("html{height:100%}h1{font-size: 3em;} h1{margin:1em 0 0.5em 0;}");
 				x.appendChild(y);
@@ -64,30 +67,30 @@ x favorite type of apple (something in a select box)
 
 	<fieldset>
 		<legend>Username and Passowrd</legend>
-		<label>Username: <input type="text" name="username" placeholder="username" pattern="\w+" required autofocus /></label>
-		<label>Password: <input type="password" name="password" placeholder="password" pattern="+" required /></label>
-		<label>Confirm Password: <input type="password" name="confPassword" placeholder="password" pattern="+" required /></label>
+		<label>Username: <input type="text" name="username" placeholder="username" maxlength="25"	pattern="[\w]+" required autofocus /></label>
+		<label>Password: <input type="password" name="password" placeholder="password" maxlength="25" pattern="[\w ]+" required /></label>
+		<label>Confirm Password: <input type="password" name="confPassword" placeholder="password" maxlength="25" pattern="\w+" required /></label>
 	</fieldset>
 
 	<fieldset>
 		<legend>Personal information</legend>
-		<label>Fullname: <input type="text" name="name" placeholder="John/Jane Doe" pattern="\w+[ ]\w+(?:[ ]\w+)?)" required /></label>
+		<label>Fullname: <input type="text" name="name" placeholder="John/Jane Doe" maxlength="50" pattern="\w+[ ]\w+(?:[ ]\w+)?" required /></label>
 		<label>Birth Date: <input type="text" name="dob" placeholder="02/26/1997" pattern="(?:1[1-2]|[0]?\d)[-/ ](?:[012]?\d|3[01])[-/ ](?:\d{2}|\d{4})" required /></label>
-		<label>Email: <input type="email" name="email" placeholder="John/JaneDoe@mail.com" pattern="\w+@\w+.\w+" required /></label>
-		<label>Gender: <input type="text" name="gender" placeholder="" pattern="\w+" required/></label>
+		<label>Email: <input type="email" name="email" placeholder="John/JaneDoe@mail.com" maxlength="50" pattern="\w+@\w+\.\w+" required /></label>
+		<label>Gender: <input type="text" name="gender" placeholder="" pattern="\w+" maxlength="10" required/></label>
 	</fieldset>
 
 	<fieldset>
 		<legend>Credit card info</legend>
 		<!-- four of any four digets fillowed by a "-", "/", or " "-->
-		<label>Credit Card Number: <input type="text" name="creditCard" placeholder="5555-5555-5555-5555" pattern="(^?:\d{4}(?:-/ )?){4}$" required /></label>
-		<label>Experation Date: <input type="text" name="experationDate" placeholder="mm/yy" pattern="(?:1[1-2]|[0]?\d)[-/ ](?:\d{2}|\d{4})" required /></label>
+		<label>Credit Card Number: <input type="text" name="creditCard" placeholder="5555-5555-5555-5555" pattern="^(?:\d{4}[-/ ]?){4}$" required /></label>
+		<label>Experation Date: <input type="text" name="experationDate" placeholder="mm/yy" pattern="(?:1[1-2]|(?:[0][1-9])+|[1-9])[-/ ]?(?:\d{2}|\d{4})" required /></label>
 		<label>Security Pin: <input type="text" name="securePin" placeholder="123" pattern="(?:\d){3}" required /></label>
 	</fieldset>
 
 	<fieldset>
 		<legend>Club info</legend>
-		<label>Requested Title: <input type="text" name="reqTitle" placeholder="bebop" pattern="[\w| ]+" required /></label>
+		<label>Requested Title: <input type="text" name="reqTitle" placeholder="bebop" maxlength="25" pattern="[\w| ]+" required /></label>
 		<label>Pokemon Go Team:
 
 			<select>
@@ -99,8 +102,9 @@ x favorite type of apple (something in a select box)
 
 		</label>
 	</fieldset>
-
-	<button onclick="join()" class="btn" type="submit">Join up!</button>
+	
+	<!-- yes this button will run the script weather the form is valid or not -->
+	<button onclick="join();" class="btn" type="submit">Join up!</button>
 </form>
 
 <footer> 
