@@ -41,11 +41,10 @@ input:focus, select:focus {
 /* The CSS validator says that invalid is an "Unknown pseudo-element or pseudo-class" despite MDN saying its an html5 recomendation;
 https://developer.mozilla.org/en-US/docs/Web/CSS/:invalid
 */
-/*
-input:invalid:focus {
+
+input:focus:invalid {
 	background: red;
 }
-*/
 
 input, select, fieldset + button {
 	box-shadow: 0 0.3em 20px -0.3em rgba(0,0,0,0.8); 
