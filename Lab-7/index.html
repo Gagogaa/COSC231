@@ -23,7 +23,6 @@ x isEid(testString)
 
 		label {
 			display: flex;
-			justify-content: flex-start;
 		}
 
 		box {
@@ -35,69 +34,27 @@ x isEid(testString)
 
 	<script>
 		// I got really tired of writing document.querySelector
+		// I wrote this myself
+		// Probably not the best way of doing it
 		function $(search){return document.querySelector(search);}
 		$.all = function (search){return document.querySelectorAll(search);}
 
-// after rereading the requirements it seems that this is not the format you want this lab in
-/*
-		// I'm not sure if this is a good way to do this but it works and it looks awesome
-		// if this is considered "acceptable" js js is my new favorite language
-
-		var is = {
-			javaIdent: function (testVar){
-				return /^[a-zA-Z$_](?:[a-zA-Z0-9$_]+)?$/.test(testVar);
-			},
-
-			phone: function (testVar){
-				return /^(?:\+?1[-\. ]?)?\(?(?:[2-9]\d{2})\)?[-\. ]?\d{3}[-\. ]?\d{4}$/.test(testVar);
-			},
-
-			email: function (testVar){
-				return //.test(testVar);
-			},
-
-			// this is a string to avoid the built in date thing?
-			"date": function (testVar){
-				return /^(?:1[012]|0[1-9]|1-9)[-\.\/ ](?:3[01]|[12]\d|0[1-9])[-\.\/ ](?:\d{2}|\d{4})$/.test(testVar);
-			},
-
-			eId: function (testVar){
-				return /^[Ee]\d{8}$/.test(testVar);
-			}
-		}
-
-		function submit(){
-			var type = getSelected();
-			// NOTE: to self regex does weird things when tested against objects
-			var value = document.querySelector("input[name=input]").value;
-			// after using querySelector so much I'm starting to wonder how efficient it is compared to getElementById and such
-			var box = document.querySelector("box");
-			if(is[type](value)){
-				box.style.background = "green";
-			}else{
-				box.style.background = "red";
-			}
-		}
-*/
-
-		// I don't like this solution as much as the one above but its still AWESOME =>.<=
-
-		function isJavaIdentifier(testVar){
+		function isJavaIdentifier(testVar){	
 			return /^[a-zA-Z$_](?:[a-zA-Z0-9$_]+)?$/.test(testVar);
 		}
 
 		function isPhone(testVar){
-			// this is basically the one we did in class but it has an optinal "+" in the front of it and it allows for the use of a "."
+			// this is basically the one we did in class but it has an optional "+" in the front of it and it allows for the use of a "."
 			return /^(?:\+?1[-\. ]?)?\(?(?:[2-9]\d{2})\)?[-\. ]?\d{3}[-\. ]?\d{4}$/.test(testVar);
 		}
 		
-		// js regex from emailregex.com (...you should check out the Perl/Ruby regex)
 		function isEmail(testVar){
+			// regex from emailregex.com (...you should check out the Perl/Ruby regex its great)
 			return /^[-a-z0-9~!$%^&*_=+}{\'?]+(\.[-a-z0-9~!$%^&*_=+}{\'?]+)*@([a-z0-9_][-a-z0-9_]*(\.[-a-z0-9_]+)*\.(aero|arpa|biz|com|coop|edu|gov|info|int|mil|museum|name|net|org|pro|travel|mobi|[a-z][a-z])|([0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}))(:[0-9]{1,5})?$/i.test(testVar);
 		}
 
 		function isDate(testVar){
-			// a month 1-12 day 1-31 and year (two or four digits) seperated by a "-", ".", "/" or " " 
+			// a month 1-12 day 1-31 and year (two or four digits) separated by a "-", ".", "/" or " " 
 			return /^(?:1[012]|0[1-9]|1-9)[-\.\/ ](?:3[01]|[12]\d|0[1-9])[-\.\/ ](?:\d{2}|\d{4})$/.test(testVar);
 		}
 

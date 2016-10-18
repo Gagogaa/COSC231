@@ -1,0 +1,67 @@
+<!doctype html>
+<!--
+lab 7
+create a high-low guessing game.
+when the user enters a value that is too low, display - too low
+when the user enters a value that is too high, display- too high
+keeps track of all user guesses and responses
+lets the user know when they are correct
+
+no ACCIDENTAL global variables
+a guess method that takes a numerical guess
+a way to reset the game so they can play the game without reloading the page
+-->
+<html lang="en">
+<head>
+	<script>
+		var playGame;		
+
+		function init(){
+			playGame = new Game(document.querySelector("div"));
+		}
+
+		function Game(Node){
+			var inNumber = getRandomInt(0, 100);
+			Node.innerHTML = "";
+
+			function getRandomInt(min, max){
+				min = Math.ceil(min);
+				max = Math.floor(max);
+				
+				return Math.floor(Math.random() * (max - min + 1)) + min;
+			}
+
+			function appendNode(Node, text){
+				var element = document.createElement("p");
+				var t = document.createTextNode(text);
+				element.appendChild(t);
+				Node.appendChild(element);
+			}
+
+			this.guess = function (){
+				var number = Number(document.querySelector("input").value);
+				var div = document.querySelector("div");
+				if(number == inNumber){
+					appendNode(div, "Your Guess of " + number + " is correct!");	
+				} else if (number > inNumber) {
+					appendNode(div, "Your Guess of " + number + " is too high!");	
+				} else if (number < inNumber) {
+					appendNode(div, "Your Guess of " + number + " is too low!");	
+				}
+			} 	
+		}
+
+	</script>
+</head>
+
+<body onload="init()">
+<input type="text" name=""></input>
+<button onclick="playGame.guess();">Guess</button>
+<button onclick="playGame = new Game(document.querySelector('div'));">Reset</button>
+
+<div>
+</div>
+
+</body>
+</html>
+
