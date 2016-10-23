@@ -13,8 +13,9 @@ a way to reset the game so they can play the game without reloading the page
 -->
 <html lang="en">
 <head>
+	<title>Game</title>
 	<script>
-		var playGame;		
+		var playGame;
 
 		function init(){
 			playGame = new Game(document.querySelector("div"));
@@ -24,6 +25,7 @@ a way to reset the game so they can play the game without reloading the page
 			var inNumber = getRandomInt(0, 100);
 			Node.innerHTML = "";
 
+			// https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/random
 			function getRandomInt(min, max){
 				min = Math.ceil(min);
 				max = Math.floor(max);
@@ -39,16 +41,16 @@ a way to reset the game so they can play the game without reloading the page
 			}
 
 			this.guess = function (){
-				var number = Number(document.querySelector("input").value);
+				var number = Number("" === document.querySelector("input").value ? "word" : document.querySelector("input").value);
 				var div = document.querySelector("div");
 				if(number == inNumber){
-					appendNode(div, "Your Guess of " + number + " is correct!");	
+					appendNode(div, "Your Guess of " + number + " is correct!");
 				} else if (number > inNumber) {
-					appendNode(div, "Your Guess of " + number + " is too high!");	
+					appendNode(div, "Your Guess of " + number + " is too high!");
 				} else if (number < inNumber) {
-					appendNode(div, "Your Guess of " + number + " is too low!");	
+					appendNode(div, "Your Guess of " + number + " is too low!");
 				}
-			} 	
+			}
 		}
 
 	</script>
@@ -64,4 +66,3 @@ a way to reset the game so they can play the game without reloading the page
 
 </body>
 </html>
-
