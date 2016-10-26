@@ -5,11 +5,11 @@ using the module format discussed in class create a module for handling cookies.
 - there should be only three public functions for manipulating cookies
   x void setData(name, value[, numDays = 0])
   x String getData(name)
-  - Number length()
+  x Number length()
 
 notes:
-  - set items takes an optional variable of the number of days the cookie should live for
-  - length returns the number of things stored in the cookie
+  x set items takes an optional variable of the number of days the cookie should live for
+  x length returns the number of things stored in the cookie
 */
 
 function Cookie(){
