@@ -14,31 +14,30 @@ notes:
 
 function Cookie(){
   var obj = {
-    setData: setData,
-    getData: getData,
-    length: length
+		setData: setData,
+		getData: getData,
+		length: length
   };
 
-  function setData(name, value, day){
+ function setData(name, value, day){
     document.cookie = name + "=" + value +
-      (day ? "; expires=" + getDate(day) : "");
+		 (day ? "; expires=" + getDate(day) : "");
   }
 
-  // TODO rewrite this to use regex capture groups
+	// regex constructor https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions
   function getData(name){
-    var name = name + "=";
-    //if(!RegExp(name + "(\w+);\?").test(document.cookie)){return null};
-    console.log(RegExp(name + "(\\w+);\\?").exec(document.cookie));
-    for(var i = 0; i < document.cookie.length; i++){
-      var j = i + name.length;
-      if(document.cookie.substring(i, j) == name){
-        return getCookieValue(j);
-      }
-      i = document.cookie.indexOf(" ", i);
-      if (i == 0) break;
-    }
-    return null;
+    var name = name;
+		var re = name + "=(\\w*)[;]?"; 
+		re = new RegExp(re);
+    return document.cookie.match(name) ? re.exec(document.cookie)[1] : null;
   }
+
+	// I dont think that this is 100% proper but it works
+	// if the cookie only has one item in it split returns an array with blank string that has a length of 1
+  function length(){
+		if(document.cookie == ""){return 0;}
+		return document.cookie.split(";").length;
+	}
 
   function getCookieValue(offset){
     var endstr = document.cookie.indexOf(";", offset);
@@ -49,19 +48,20 @@ function Cookie(){
   }
 
   // UTC string https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/toUTCString
+	// Date() https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date
+	// TODO: needs some work to get working right if the number of day sets it over 31
   function getDate(days){
-    //var today = new Date();
-    //DateObj.toUTCDate();
-    todaysDate = new Date();
-    returnDate = todaysDate.toUTCString();
-    if(days){
-      var modDate = todaysDate.getDate() + days;
-      var remove = todaysDate.getDate();
-      returnDate = returnDate.replace(RegExp(remove), modDate);
-    }
-    return returnDate;
+    var todaysDate = new Date();
+		var year = todaysDate.getUTCFullYear();
+		var month = todaysDate.getUTCMonth();
+		var day = todaysDate.getUTCDate() + days;
+		while(day > ){
+
+		}
+
+		var returnDate = new Date(year, month, day);
+    return returnDate.toUTCString();
   }
 
-  function length(){}
   return obj;
 }
