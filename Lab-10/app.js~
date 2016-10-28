@@ -1,0 +1,33 @@
+/*
+lab 10
+create a table of size at least 3x3 with randomly changing colors. 
+Clicking on the individual square stops the colors from changing.
+*/
+
+function app(tableId){
+
+	var obj = {
+		colorTable: colorTable,
+		startColors: startColors,
+		stopColors: stopColors
+	};
+
+	var start = setInterval(colorChanger, 30);
+
+	function colorChanger(){
+		changeColors(document.querySelectorAll("#" + tableId + " td"));
+	}
+
+	function changeColors(tds){
+		for(var i = 0; i < tds.length; i++){
+			tds[i].style.backgroundColor = getRandomColor();
+		}
+
+	}
+
+	function getRandomColor(){
+		return "#f00";
+	}
+
+	return obj;
+}
