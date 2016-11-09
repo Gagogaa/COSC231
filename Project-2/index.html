@@ -13,9 +13,11 @@
 
 		<script type="text/javascript">
 		function init(){
-			//Logic("game");
 			var game = new Game("game");
 			game.start();
+			document.querySelector("#game").innerHTML = "";
+
+
 		}
 
 		</script>
@@ -29,5 +31,8 @@
 			<tr><td></td><td></td><td></td><td></td><td></td><td></td></tr>
 			<tr><td></td><td></td><td></td><td></td><td></td><td></td></tr>
 		</table>
+		<div id="test">
+
+		</div>
 	</body>
 </html>
