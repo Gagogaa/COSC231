@@ -26,7 +26,7 @@ function Cookie(){
 
 	// regex constructor https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions
   function getData(name){
-		var re = name + "=(\\w*)"; 
+		var re = name + "=(\\w*)";
 		re = new RegExp(re);
     return document.cookie.match(name) ? re.exec(document.cookie)[1] : null;
   }
@@ -38,14 +38,6 @@ function Cookie(){
 		if(document.cookie == ""){return 0;}
 		return document.cookie.split(";").length;
 	}
-
-  function getCookieValue(offset){
-    var endstr = document.cookie.indexOf(";", offset);
-    if(endstr == -1){
-      endstr = document.cookie.length;
-    }
-    return document.cookie.substring(offset, endstr);
-  }
 
   // UTC string https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/toUTCString
 	// Date() https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date

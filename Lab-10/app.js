@@ -1,6 +1,6 @@
 /*
 lab 10
-create a table of size at least 3x3 with randomly changing colors. 
+create a table of size at least 3x3 with randomly changing colors.
 Clicking on the individual square stops the colors from changing.
 */
 
@@ -14,8 +14,7 @@ function app(tableId){
 	};
 
 	// I dont know if this is a good way to do this because it exposes variables
-	// Nevermind the changeColor variable is private
-	for(var i = 0; i < _tds.length; i++){
+	for(var i = 0; i < _tds.length; i++){ 
 		_tds[i].addEventListener("click", function(){this.changeColor = !this.changeColor;});
 	}
 
