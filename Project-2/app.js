@@ -133,7 +133,25 @@ function Draw(){
   }
 
   function draw(worldArray, playerPosArray){
+    var counter = 0;
+    var table = document.querySelectorAll("td");
     worldArray[playerPosArray[0]][playerPosArray[1]] = "w";
+
+    for (var i = 0; i < worldArray.length; i++) {
+      for (var j = 0; j < worldArray[i].length; j++) {
+        switch (worldArray[i][j]) {
+          case "g":
+            table[counter].style.backgroundColor = "green";
+            break;
+
+          case "w":
+            table[counter].style.backgroundColor = "red";
+            break;
+        }
+        counter++;
+      }
+    }
+
     document.querySelector("#test").innerHTML = worldArray.join('<br />');
     //console.log(worldArray.join('\n'));
 
