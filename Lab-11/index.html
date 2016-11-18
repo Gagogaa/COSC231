@@ -1,0 +1,261 @@
+<!--
+lab 11
+
+Create a form with a username and password, along with 'Login' and 'Register' buttons.
+
+When the user clicks 'Login' for the first time, the page uses AJAX to load a file of valid usernames and checks if the username and password exist. Give a user response of either success or failiure.
+
+When the user clicks 'Register', the username and password are validated against the following rules:
+    -usernames must
+        start with a '$' (dollar sign character, no quotes)
+        have no capital letters
+        have no numbers in the first four characters
+    -passwords must not be password be longer than 15 characters OR
+            be at least 8 characters
+            use at least one of the following: &%$^#@=
+            have at least 2 numbers that are not at either the beginning or the end NOR can they be next to each other within the password
+            have at least 2 uppercase and 2 lowercase characters
+-->
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+    <title>Lab-11</title>
+    <style media="screen">
+        * {
+            font-size: 1em;
+        }
+
+        html {
+            background-color: #eee;
+        }
+
+        .card {
+            padding: 2em;
+            border: 2em;
+            margin: 1em auto;
+            margin-top: 5em;
+            width: 300px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            background-color: white;
+            box-shadow: 0px 2px 40px 1px rgba(0, 0, 0, 0.2);
+        }
+
+        label {
+            font-family: 'Raleway', sans-serif;
+            padding: 0.5em;
+            margin: 0.5em;
+        }
+
+        .btn {
+            color: black;
+            font-family: 'Raleway', sans-serif;
+            background-color: white;
+            display: flex;
+            justify-content: center;
+            height: 2em;
+            border: solid 1px #4285F4;
+            margin: 0.5em;
+            transition: color 0.2s, background-color 0.2s;
+        }
+
+        .btn:focus {
+            color: white;
+            background-color: #4285F4;
+        }
+
+        .btn:hover {
+            color: white;
+            background-color: #4285F4;
+        }
+
+        input {
+            color: black;
+            padding: 5px;
+            margin: 0.5em auto;
+            width: 100%;
+            height: 2em;
+            border: solid 1px black;
+            transition: color 0.2s, background-color 0.2s, box-shadow 0.2s;
+        }
+
+        input:focus {
+            color: white;
+            box-shadow: 0px 10px 40px -15px rgba(0, 0, 0, 0.8);
+        }
+
+        input:invalid {
+            border-color: #DB4437;
+        }
+
+        input:valid {
+            border-color: #34A853;
+        }
+
+        input:valid:focus {
+            color: white;
+            background-color: #34A853;
+        }
+
+        input:focus:invalid {
+            border-color: #DB4437;
+            background-color: #DB4437;
+        }
+
+        form {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .buttons {
+            margin-bottom: 2em;
+            height: 2em;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+        }
+
+        /* max height hack */
+        /* http://stackoverflow.com/questions/3508605/how-can-i-transition-height-0-to-height-auto-using-css */
+        @keyframes myAnimation {
+            0% {
+                max-height: 0px;
+            }
+            20%,
+            80% {
+                max-height: 1000px;
+            }
+            100% {
+                max-height: 0px;
+            }
+        }
+
+        #demo {
+            font-family: 'Raleway', sans-serif;
+            color: white;
+            text-align: center;
+            width: 100%;
+            overflow: hidden;
+            max-height: 0;
+        }
+
+        p{
+            margin: 1em;
+        }
+
+        #demo.expand {
+            animation: myAnimation 5s ease-in-out both;
+            max-height: 1000px;
+        }
+    </style>
+    <script type="text/javascript">
+        function loadDoc(_func) {
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState === 4 && this.status === 200) {
+                    _func(JSON.parse(this.responseText));
+                }
+            };
+            xhttp.open("GET", "login.json");
+            xhttp.send();
+        }
+
+        function validateInput() {
+            var obj = {};
+            obj.name = document.querySelector("input[name='username']").value;
+            obj.pass = document.querySelector("input[name='password']").value;
+            // return false if its not a valid username
+            if (!/^\$(([a-z]{0,3})|(?:[a-z]{4}(?:[a-z0-9]*)))$/.test(obj.name)) {
+                obj.name = null;
+            }
+            // return false if its not a valid password
+            if (!/^(?=^\D.*\D$)(?=(?:.*[A-Z]){2})(?=(?:.*[a-z]){2})(?=(?:\D+[\d]){2})(?!.*\d\d)(?=.*[&%$^#@=])[\dA-Za-z&%$^#@=]{8,15}$/.test(obj.pass)) {
+                obj.pass = null;
+            }
+            return obj;
+        }
+
+        function compairToDatabase(_data, _input) {
+            return _input.pass === _data[_input.name];
+        }
+
+        function display(msg, color) {
+            var demo = document.querySelector("#demo");
+            demo.classList.add("expand");
+            demo.style.backgroundColor = color;
+            demo.innerHTML = "<p>" + msg + "<p>";
+            addEventListener("animationend", function() {
+                demo.classList.remove("expand")
+            });
+        }
+
+        function login() {
+            loadDoc(function(_data) {
+                var _input = validateInput();
+
+                if (compairToDatabase(_data, _input)) { // login sucessful
+                    display("Welcom back " + _input.name + "!", "#34A853");
+                } else if (_data[_input.name] !== undefined && _data[_input.name] !== _input.pass) { // login failed, User not in database
+                    display("Wrong password " + _input.name + "!", "#DB4437");
+                } else if (_input.name && _input.pass) { // login failed, User not in database
+                    display("Try registering " + _input.name, "#F4B400");
+                } else if (_input.name === null) {
+                    display("Names must start with a $ and only contain alpha-numeric characters (note: the first four characters cannot be digits)", "#DB4437");
+                } else if (_input.pass === null) {
+                    display(
+                        "Passwords must be between 8 and 15 characters contain two lowercase and uppercase letters two numbers (numbers cannot be at the beginning or the end nor can they be next to eachother) and a password must contain a &, %, $, ^, #, @, or an = ",
+                        "#DB4437");
+                }
+            });
+        }
+
+        function register() {
+            loadDoc(function(_data) {
+                var _input = validateInput();
+
+                if (compairToDatabase(_data, _input) || _data[_input.name]) {
+                    display("Woah try logging in " + _input.name + "!", "#F4B400");
+                } else if (_input.name && _input.pass) { // sucess register
+                    display("Welcom to the Club!", "#34A853");
+                } else if (_input.name === null) {
+                    display("Names must start with a $ and only contain alpha-numeric characters (note: the first four characters cannot be digits)", "#DB4437");
+                } else if (_input.pass === null) {
+                    display(
+                        "Passwords must be between 8 and 15 characters contain two lowercase and uppercase letters two numbers (numbers cannot be at the beginning or the end nor can they be next to eachother) and a password must contain a &, %, $, ^, #, @, or an = ",
+                        "#DB4437");
+                }
+            });
+        }
+    </script>
+</head>
+
+<body>
+
+    <div class="card">
+
+        <form action="index.html" method="POST">
+            <!-- Inspo from http://stackoverflow.com/questions/17973233/regular-expression-for-no-more-than-2-repeated-letters-digits -->
+            <!-- N1nja$AreD0pe -->
+            <!-- Pa5$w0rD -->
+            <label>Username: <input type="text" name="username" placeholder="" pattern="^\$(([a-z]{0,3})|(?:[a-z]{4}(?:[a-z0-9]*)))$" required autofocus /></label> <br>
+            <label>Password: <input type="text" name="password" placeholder="" pattern="^(?=^\D.*\D$)(?=(?:.*[A-Z]){2})(?=(?:.*[a-z]){2})(?=(?:\D+[\d]){2})(?!.*\d\d)(?=.*[&%$^#@=])[\dA-Za-z&%$^#@=]{8,15}$" required /></label>
+        </form>
+
+        <div class="buttons">
+            <button class="btn" type="button" onclick="login();" name="login">Login</button>
+            <button class="btn" type="button" onclick="register();" name="register">Register</button>
+        </div>
+
+        <div id="demo"></div>
+
+    </div>
+
+
+</body>
+
+</html>
