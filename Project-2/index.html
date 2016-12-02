@@ -1,82 +1,184 @@
+<!doctype HTML>
 <html>
 
 <head>
-	<title>Project 2</title>
-	<style>
-		td {
-			width: 5em;
-			height: 5em;
-			background-color: red;
-		}
-	</style>
+    <title>Project 2</title>
+    <style>
+        body {
+            align-content: center;
+            text-align: center;
+            align-items: center;
+        }
 
-	<script src="app.js"></script>
+        table {
+            width: 700px;
+            height: 700px;
+            margin: auto;
+        }
 
-	<script type="text/javascript">
-		function init() {
-			var game = new Game("game");
-			game.start();
-			//			document.querySelector("#game").innerHTML = "";
+        #inventory {
+            display: flex;
+            justify-content: center;
+            height: 1em;
+        }
 
+        #inventory div {
+            background-color: red;
+            width: 2em;
+            height: 2em;
+            margin: 0 0.1em 0 0.1em;
+            /*FIXME The grass img works but the fire and water imgs don't? */
+            background-image: url('images/water.png');
+            background-position: center;
+            background-size: cover;
+        }
 
-		}
-	</script>
+        td {
+            width: 5em;
+            height: 5em;
+            background-image: url('images/grass.png');
+            background-position: center;
+            background-size: cover;
+        }
+    </style>
+
+    <script src="app.js"></script>
+
+    <script type="text/javascript">
+        function init() {
+            var game = new Game("game");
+            game.start();
+            // document.querySelector("#game").innerHTML = "";
+        }
+    </script>
 </head>
 
 <body onload="init();">
-	<table id="game">
-		<tr>
-			<td></td>
-			<td></td>
-			<td></td>
-			<td></td>
-			<td></td>
-			<td></td>
-		</tr>
-		<tr>
-			<td></td>
-			<td></td>
-			<td></td>
-			<td></td>
-			<td></td>
-			<td></td>
-		</tr>
-		<tr>
-			<td></td>
-			<td></td>
-			<td></td>
-			<td></td>
-			<td></td>
-			<td></td>
-		</tr>
-		<tr>
-			<td></td>
-			<td></td>
-			<td></td>
-			<td></td>
-			<td></td>
-			<td></td>
-		</tr>
-		<tr>
-			<td></td>
-			<td></td>
-			<td></td>
-			<td></td>
-			<td></td>
-			<td></td>
-		</tr>
-		<tr>
-			<td></td>
-			<td></td>
-			<td></td>
-			<td></td>
-			<td></td>
-			<td></td>
-		</tr>
-	</table>
-	<div id="test">
+    <h1>Fireman Game</h1>
 
-	</div>
+    <div id="countDown">
+
+    </div>
+
+    <table id="game">
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+    </table>
+
+    <div id="inventory">
+
+    </div>
+
+    <div id="test">
+
+    </div>
+
 </body>
 
 </html>

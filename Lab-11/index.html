@@ -169,11 +169,11 @@ When the user clicks 'Register', the username and password are validated against
             var obj = {};
             obj.name = document.querySelector("input[name='username']").value;
             obj.pass = document.querySelector("input[name='password']").value;
-            // return false if its not a valid username
+            // return if its not a valid username
             if (!/^\$(([a-z]{0,3})|(?:[a-z]{4}(?:[a-z0-9]*)))$/.test(obj.name)) {
                 obj.name = null;
             }
-            // return false if its not a valid password
+            // return null if its not a valid password
             if (!/^(?=^\D.*\D$)(?=(?:.*[A-Z]){2})(?=(?:.*[a-z]){2})(?=(?:\D+[\d]){2})(?!.*\d\d)(?=.*[&%$^#@=])[\dA-Za-z&%$^#@=]{8,15}$/.test(obj.pass)) {
                 obj.pass = null;
             }
@@ -254,7 +254,6 @@ When the user clicks 'Register', the username and password are validated against
         <div id="demo"></div>
 
     </div>
-
 
 </body>
 
